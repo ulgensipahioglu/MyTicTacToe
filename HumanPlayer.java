@@ -20,7 +20,8 @@ public class HumanPlayer extends Player {
         while (!valid) { // repeat until a valid move is made
             try {
                  // Prompt the user for input
-                System.out.println(name + " are " + symbol + ", enter your move (row and col 0-2):");
+                System.out.println(name + " are " + symbol + ". Enter your move as two numbers separated by a space (row and column 0-2):");
+
                 
                 // Read row and column from the user
                 int row = myScanner.nextInt();

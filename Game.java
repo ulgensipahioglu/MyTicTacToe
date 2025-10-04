@@ -31,9 +31,15 @@ public class Game {
             // Check if there is a winner after human's move.
             char winner = board.checkWinner();
             if (winner != '-') {
-                if (winner == 'X') System.out.println("Congratulations, you won!");
-                else System.out.println("Oops! The computer won this time.");
-                break; // End the game.
+                if (winner == 'X') {
+                System.out.println("Congratulations, you won!");
+                ScoreSaver.main("Human"); //Save the score
+                }
+                else {
+                System.out.println("Oops! The computer won this time.");
+                ScoreSaver.main("Computer"); // Save the score
+                }
+            break; // End the game.
             }
 
             // If no winner but the board is full -> tie.
@@ -49,8 +55,14 @@ public class Game {
             // Check if there is a winner after computer's move.
             winner = board.checkWinner();
             if (winner != '-') {
-                if (winner == 'X') System.out.println("Congratulations, you won!");
-                else System.out.println("Oops! The computer won this time.");
+                if (winner == 'X') {
+                    System.out.println("Congratulations, you won!");
+                    ScoreSaver.main("Human"); // Save the score
+                }
+                else {
+                    System.out.println("Oops! The computer won this time.");
+                    ScoreSaver.main("Computer"); // Save the score
+                }
                 break; // End the game.
             }
 

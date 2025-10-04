@@ -47,7 +47,7 @@ public class Board {
         if (board[row][col] != '-') {
             return false;
         }
-     // If the cell is already occupied, the move is invalid.
+        // If the cell is already occupied, the move is invalid.
 
         return false;
     }
@@ -77,7 +77,7 @@ public class Board {
         // Check diagonals.
             if (board[0][0] != '-' && board[0][0] == board[1][1] && board[1][1] == board[2][2])
             return board[0][0]; // // return symbol X or O
-            if (board[0][2] != '-' && board[0][2] == board[1][1] && board[1][1] == board[2][2])
+            if (board[0][2] != '-' && board[0][2] == board[1][1] && board[1][1] == board[2][0])
             return board[0][2]; // // return symbol X or O
 
             return '-'; // No winner found.
