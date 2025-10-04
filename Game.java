@@ -1,43 +1,64 @@
 public class Game {
     private Board board;
-    private Players humanPlayers;
-    private Players computerPlayers;
+    private Player human;
+    private Player computer;
 
-public Game(){
-    board = new Board();
-    humanPlayers = new Players("You", 'X', false);
-    computerPlayers = new Players("Computer", 'O', false);
-}
+
+
+    // Constructor.
+    // Creates a new game with a fresh board,
+    // a human player (X) and a computer player (O).
+    public Game() { 
+        board = new Board();
+        human = new HumanPlayer("You", 'X');
+        computer = new ComputerPlayer("Computer", 'O');
+    }
+
+
+
+    // Starts the game loop.
+    // Alternates between human and computer moves until:
+    // - one of them wins, or
+    // - the board is full (tie).
     public void start() {
-        board.print();
+        board.print(); // Print the initial empty board.
         while (true) {
-            humanPlayers.makeMove(board);
+            // Human makes a move.
+
+            human.makeMove(board);
             board.print();
-            if (board.checkWinner() != '-') 
-            {
-                System.out.println("Winner is: "+ board.checkWinner());
-                break;
+
+            // Check if there is a winner after human's move.
+            char winner = board.checkWinner();
+            if (winner != '-') {
+                if (winner == 'X') System.out.println("Congratulations, you won!");
+                else System.out.println("Oops! The computer won this time.");
+                break; // End the game.
             }
+
+            // If no winner but the board is full -> tie.
+            if (board.isFull()) { 
+                System.out.println("It's a tie!");
+                break; // End the game.
+            }
+
+            // Computer makes a move.
+            computer.makeMove(board); 
+            board.print();
+
+            // Check if there is a winner after computer's move.
+            winner = board.checkWinner();
+            if (winner != '-') {
+                if (winner == 'X') System.out.println("Congratulations, you won!");
+                else System.out.println("Oops! The computer won this time.");
+                break; // End the game.
+            }
+
+            // If no winner but the board is full -> tie.
             if (board.isFull()) {
                 System.out.println("It's a tie!");
-                break;
-            }
-
-            computerPlayers.makeMove(board);
-            board.print();
-            if (board.checkWinner() != '-') 
-            {
-                System.out.println("Winner is: "+ board.checkWinner());
-                break;
-            }
-            if(board.isFull())
-            {
-                System.out.println("It's a tie!");
-                break;
+                break; // End the game.
             }
         }
     }
 }
-
-
-
